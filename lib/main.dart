@@ -1,10 +1,12 @@
 import 'package:ed_proj/login_page.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_naver_map/flutter_naver_map.dart';
 import 'package:geolocator/geolocator.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  FirebaseApp app = await Firebase.initializeApp();
   await NaverMapSdk.instance.initialize(clientId: "cz2zinkc5h");
   var permission = await Geolocator.checkPermission();
   if (permission == LocationPermission.denied) {
